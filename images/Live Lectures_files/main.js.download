@@ -1,0 +1,343 @@
+!(function () {
+    "use strict";
+    let e = (e, t = !1) => (((e = e.trim()), t) ? [...document.querySelectorAll(e)] : document.querySelector(e)),
+        t = (t, a, i, l = !1) => {
+            let s = e(a, l);
+            s && (l ? s.forEach((e) => e.addEventListener(t, i)) : s.addEventListener(t, i));
+        },
+        a = (e, t) => {
+            e.addEventListener("scroll", t);
+        },
+        i = e("#navbar .scrollto", !0),
+        l = () => {
+            let t = window.scrollY + 200;
+            i.forEach((a) => {
+                if (!a.hash) return;
+                let i = e(a.hash);
+                i && (t >= i.offsetTop && t <= i.offsetTop + i.offsetHeight ? a.classList.add("active") : a.classList.remove("active"));
+            });
+        };
+    window.addEventListener("load", l), a(document, l);
+    let s = (t) => {
+            let a = e("#header"),
+                i = a.offsetHeight;
+            a.classList.contains("fixed-top") || (i += 70);
+            let l = e(t).offsetTop;
+            window.scrollTo({ top: l - i, behavior: "smooth" });
+        },
+        n = e("#header"),
+        r = e("#topbar");
+    if (n) {
+        let o = () => {
+            window.scrollY > 100 ? (n.classList.add("header-scrolled"), r && r.classList.add("topbar-scrolled")) : (n.classList.remove("header-scrolled"), r && r.classList.remove("topbar-scrolled"));
+        };
+        window.addEventListener("load", o), a(document, o);
+    }
+    let c = e(".back-to-top");
+    if (c) {
+        let d = () => {
+            window.scrollY > 100 ? c.classList.add("active") : c.classList.remove("active");
+        };
+        window.addEventListener("load", d), a(document, d);
+    }
+    t("click", ".mobile-nav-toggle", function (t) {
+        e("#navbar").classList.toggle("navbar-mobile"), this.classList.toggle("bi-list"), this.classList.toggle("bi-x");
+    }),
+        t(
+            "click",
+            ".navbar .dropdown > a",
+            function (t) {
+                e("#navbar").classList.contains("navbar-mobile") && (t.preventDefault(), this.nextElementSibling.classList.toggle("dropdown-active"));
+            },
+            !0
+        ),
+        t(
+            "click",
+            ".scrollto",
+            function (t) {
+                if (e(this.hash)) {
+                    t.preventDefault();
+                    let a = e("#navbar");
+                    if (a.classList.contains("navbar-mobile")) {
+                        a.classList.remove("navbar-mobile");
+                        let i = e(".mobile-nav-toggle");
+                        i.classList.toggle("bi-list"), i.classList.toggle("bi-x");
+                    }
+                    s(this.hash);
+                }
+            },
+            !0
+        ),
+        window.addEventListener("load", () => {
+            window.location.hash && e(window.location.hash) && s(window.location.hash);
+        }),
+        new Swiper(".detail-slider", {
+            speed: 400,
+            loop: !0,
+            autoplay: { delay: 5e3, disableOnInteraction: !1 },
+            slidesPerView: "auto",
+            pagination: { el: ".swiper-pagination", type: "bullets", clickable: !0 },
+            breakpoints: { 320: { slidesPerView: 1.2, spaceBetween: 10 }, 480: { slidesPerView: 2, spaceBetween: 20 }, 640: { slidesPerView: 2, spaceBetween: 20 }, 992: { slidesPerView: 3.2, spaceBetween: 15 } },
+        }),
+        new Swiper(".clients-slider", {
+            speed: 400,
+            loop: !0,
+            autoplay: { delay: 5e3, disableOnInteraction: !1 },
+            slidesPerView: "auto",
+            pagination: { el: ".swiper-pagination", type: "bullets", clickable: !0 },
+            breakpoints: { 320: { slidesPerView: 1.2, spaceBetween: 10 }, 480: { slidesPerView: 2, spaceBetween: 20 }, 640: { slidesPerView: 2, spaceBetween: 20 }, 992: { slidesPerView: 3.2, spaceBetween: 15 } },
+        }),
+        new Swiper(".academic-slider", {
+            speed: 400,
+            loop: !0,
+            autoplay: { delay: 5e3, disableOnInteraction: !1 },
+            slidesPerView: "auto",
+            pagination: { el: ".swiper-pagination", type: "bullets", clickable: !0 },
+            breakpoints: { 320: { slidesPerView: 1.2, spaceBetween: 30 }, 480: { slidesPerView: 3, spaceBetween: 20 }, 640: { slidesPerView: 4, spaceBetween: 40 }, 992: { slidesPerView: 3, spaceBetween: 30 } },
+        }),
+        new Swiper(".testimonial-slider", {
+            speed: 400,
+            loop: !0,
+            autoplay: { delay: 2500, disableOnInteraction: !1 },
+            slidesPerView: "auto",
+            pagination: { el: ".swiper-pagination", type: "bullets", clickable: !0 },
+            breakpoints: { 320: { slidesPerView: 1, spaceBetween: 30 }, 480: { slidesPerView: 3, spaceBetween: 20 }, 640: { slidesPerView: 2, spaceBetween: 40 }, 992: { slidesPerView: 3, spaceBetween: 30 } },
+        }),
+        new Swiper(".resource-slider", {
+            speed: 400,
+            loop: !0,
+            autoplay: { delay: 2500, disableOnInteraction: !1 },
+            slidesPerView: "auto",
+            pagination: { el: ".swiper-pagination", type: "bullets", clickable: !0 },
+            breakpoints: { 320: { slidesPerView: 1.2, spaceBetween: 30 }, 480: { slidesPerView: 3, spaceBetween: 20 }, 640: { slidesPerView: 4, spaceBetween: 40 }, 992: { slidesPerView: 6, spaceBetween: 30 } },
+        }),
+        new Swiper(".registar-slider", {
+            speed: 400,
+            loop: !0,
+            autoplay: { delay: 2500, disableOnInteraction: !1 },
+            slidesPerView: "auto",
+            pagination: { el: ".swiper-pagination", type: "bullets", clickable: !0 },
+            breakpoints: { 320: { slidesPerView: 1.2, spaceBetween: 30 }, 480: { slidesPerView: 3, spaceBetween: 20 }, 640: { slidesPerView: 4, spaceBetween: 40 }, 992: { slidesPerView: 4.1, spaceBetween: 30 } },
+        }),
+        new Swiper(".mobile-slider", {
+            speed: 400,
+            loop: !0,
+            autoplay: { delay: 5e3, disableOnInteraction: !1 },
+            slidesPerView: "auto",
+            pagination: { el: ".swiper-pagination", type: "bullets", clickable: !0 },
+            breakpoints: { 320: { slidesPerView: 2, spaceBetween: 30 }, 480: { slidesPerView: 2.2, spaceBetween: 60 }, 640: { slidesPerView: 4, spaceBetween: 80 }, 992: { slidesPerView: 3, spaceBetween: 30 } },
+        }),
+        window.addEventListener("load", () => {
+            let a = e(".portfolio-container");
+            if (a) {
+                let i = new Isotope(a, { itemSelector: ".portfolio-item", layoutMode: "fitRows" }),
+                    l = e("#portfolio-flters li", !0);
+                t(
+                    "click",
+                    "#portfolio-flters li",
+                    function (e) {
+                        e.preventDefault(),
+                            l.forEach(function (e) {
+                                e.classList.remove("filter-active");
+                            }),
+                            this.classList.add("filter-active"),
+                            i.arrange({ filter: this.getAttribute("data-filter") }),
+                            i.on("arrangeComplete", function () {
+                                AOS.refresh();
+                            });
+                    },
+                    !0
+                );
+            }
+        }),
+        GLightbox({ selector: ".portfolio-lightbox" }),
+        new Swiper(".portfolio-details-slider", {
+            speed: 400, 
+            loop: !0,
+            autoplay: { delay: 5e3, disableOnInteraction: !1 }, 
+            pagination: { el: ".swiper-pagination", type: "bullets", clickable: !0 } }),
+        window.addEventListener("load", () => {
+            AOS.init({ duration: 1e3, easing: "ease-in-out", once: !0, mirror: !1 });
+        });
+})(),
+    $(function () {
+        $(".btn-circle").on("click", function () {
+            $(".btn-circle.btn-info").removeClass("btn-info").addClass("btn-default"), $(this).addClass("btn-info").removeClass("btn-default").blur();
+        }),
+            $(".next-step, .prev-step").on("click", function (e) {
+                var t = $(".tab-pane.active");
+                if (($(".btn-circle.btn-info").removeClass("btn-info").addClass("btn-default"), $(e.target).hasClass("next-step"))) {
+                    var a = t.next(".tab-pane").attr("id");
+                    $('[href="#' + a + '"]')
+                        .addClass("btn-info")
+                        .removeClass("btn-default"),
+                        $('[href="#' + a + '"]').tab("show");
+                } else {
+                    var i = t.prev(".tab-pane").attr("id");
+                    $('[href="#' + i + '"]')
+                        .addClass("btn-info")
+                        .removeClass("btn-default"),
+                        $('[href="#' + i + '"]').tab("show");
+                }
+            });
+    }),
+    $(document).ready(function () {
+        $(".nav-tabs .nav-link").click(function () {
+            $(".bi-circle-fill").css("color", "#6e6e6eb0"), $("a.active").next(".bi-circle-fill").css("color", "#05579e");
+        }),
+            $("#appNow, #appNowHeader").click(function () {
+                jQuery(".sidebar-contact").toggleClass("active"), jQuery(".toggle").toggleClass("active");
+            });
+    }),
+    $(document).ready(function () {
+        jQuery.validator.addMethod(
+            "lettersonlys",
+            function (e, t) {
+                return this.optional(t) || /^[a-zA-Z ]*$/.test(e);
+            },
+            "Letters only please"
+        ),
+            jQuery.validator.addMethod(
+                "lettersonlys",
+                function (e, t) {
+                    return this.optional(t) || /^[a-zA-Z ]*$/.test(e);
+                },
+                "Letters only please"
+            ),
+            jQuery.validator.addMethod(
+                "validateemail",
+                function (e, t) {
+                    return /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/.test(e);
+                },
+                "Please enter valid email"
+            ),
+            $(".lplead").validate({
+                onfocusout: function (e) {
+                    $(e).valid();
+                },
+                rules: {
+                    name: { required: !0, lettersonlys: !0, minlength: 3 },
+                    email: { required: !0, validateemail: !0 },
+                    mobile: { required: !0, number: !0, maxlength: 10, minlength: 10 },
+                    course: { required: !0 },
+                    qualification: { required: true },
+                    captcha: { required: !0 },
+                    confirmcaptcha: { required: !0, equalTo: "#captcha" },
+                    check: { required: !0 },
+                },
+                messages: {
+                    name: { required: "Please enter name", lettersonlys: "Please enter letters only", minlength: "Enter minimum 3 characeters" },
+                    email: { required: "Please enter email", email: "Please enter valid email" },
+                    mobile: { required: "Please enter mobile", maxlength: "Please enter maximum 10 digits", minlength: "Please enter minimum 10 digits" },
+                    course: { required: "Please select course" },
+                    qualification: { required: "Please select qualification" },
+                    captcha: { required: "Captcha is not available" },
+                    confirmcaptcha: { required: "Please enter captcha", equalTo: "Captcha is not matched" },
+                    check: { required: "Please check terms & conditions" },
+                },
+                submitHandler: function (e) {
+                   if ($("#otpvalidatepopup").val() == 1) {
+                        form.submit();
+                    } else {
+                         toastr.error("Please generate OTP");
+                        $('.submitBtnpopup').prop('disabled', true);
+                    }
+                },
+            }),
+            $(".lpleadForm1").validate({
+                onfocusout: function (e) {
+                    $(e).valid();
+                },
+                rules: {
+                    name: { required: !0, lettersonlys: !0, minlength: 3 },
+                    email: { required: !0, validateemail: !0 },
+                    mobile: { required: !0, number: !0, maxlength: 10, minlength: 10 },
+                    course: { required: !0 },
+                    qualification: { required: true },
+                    floatcaptcha: { required: !0 },
+                    floatconfirmcaptcha: { required: !0, equalTo: "#floatcaptcha" },
+                    check: { required: !0 },
+                },
+                messages: {
+                    name: { required: "Please enter name", lettersonlys: "Please enter letters only", minlength: "Enter minimum 3 characeters" },
+                    email: { required: "Please enter email", email: "Please enter valid email" },
+                    mobile: { required: "Please enter mobile", minlength: "Please enter minimum 10 digits" },
+                    course: { required: "Please select course" },
+                    qualification: { required: "Please select qualification" },
+                    floatcaptcha: { required: "Captcha is not available" },
+                    floatconfirmcaptcha: { required: "Please enter captcha", equalTo: "Captcha is not matched" },
+                    check: { required: "Please check terms & conditions" },
+                },
+                submitHandler: function (e) {
+                  if ($("#otpvalidate").val() == 1) {
+                        form.submit();
+                   } else {
+                       toastr.error("Please generate OTP");
+                       $('.submitBtn').prop('disabled', true);
+                  }
+                },
+            }),
+            $(".coursePage").validate({
+                onfocusout: function (e) {
+                    $(e).valid();
+                },
+                rules: {
+                    name: { required: !0, lettersonlys: !0, minlength: 3 },
+                    email: { required: !0, validateemail: !0 },
+                    mobile: { required: !0, maxlength: 10, number: !0, minlength: 10 },
+                    course: { required: !0 },
+                    qualification: { required: true },
+                    captcha: { required: !0 },
+                    confirmcaptcha: { required: !0, equalTo: "#captcha" },
+                    check: { required: !0 },
+                },
+                messages: {
+                    name: { required: "Please enter name", lettersonlys: "Please enter letters only", minlength: "Enter minimum 3 characeters" },
+                    email: { required: "Please enter email", email: "Please enter valid email" },
+                    mobile: { required: "Please enter mobile", maxlength: "Please enter maximum 10 digits", minlength: "Please enter minimum 10 digits" },
+                    course: { required: "Please select course" },
+                    qualification: { required: "Please select qualification" },
+                    captcha: { required: "Captcha is not available" },
+                    confirmcaptcha: { required: "Please enter captcha", equalTo: "Captcha is not matched" },
+                    check: { required: "Please check terms & conditions" },
+                },
+                submitHandler: function (e) {
+                     if ($("#otpvalidatefooter").val() == 1) {
+                        form.submit();
+                    } else {
+                        toastr.error("Please generate OTP");
+                        $('.submitBtnfooter').prop('disabled', true);
+                     }
+                },
+            });
+    }),
+    jQuery(document).ready(function () {
+        jQuery(".toggle").click(function () {
+            jQuery(".sidebar-contact").toggleClass("active"), jQuery(".toggle").toggleClass("active");
+        }),
+            $(function () {
+                $("#exampleModal").modal({ show: !0, keyboard: !1, backdrop: "static" });
+            });
+    }),
+    $(document).scroll(function () {
+        $(this).scrollTop();
+        var e = document.documentElement,
+            t = document.body,
+            a = "scrollTop",
+            i = "scrollHeight";
+        ((e[a] || t[a]) / ((e[i] || t[i]) - e.clientHeight)) * 100 > 80 ? $("#stickyForm").css("position", "absolute") : $("#stickyForm").css("position", "fixed");
+    }),
+    $(".btn-close").click(function () {
+        jQuery("#videoContainers").attr("src", " ");
+    }),
+    $(".videoBtn").click(function () {
+        $("#videoContainers").attr("src", "https://www.youtube.com/embed/PfFUJZ0xOvE?autoplay=1");
+    }),
+    $("#Benifit .row").hover(
+        function () {
+            $("#focus").removeClass("active");
+        },
+        function () {
+            $("#focus").addClass("active");
+        }
+    );

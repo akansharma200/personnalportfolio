@@ -3,11 +3,12 @@
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
       <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
       <link rel="stylesheet" href="style.css">
       <title>Personal Portfolio</title>
     </head>
-    <body>
+    <body onload="startAnimate">
        <div class="home">
         <div class="container">
 
@@ -32,6 +33,25 @@
                     </li>
                 </ul>
             </div>
+            <div class="menu">
+                <i onclick="showMenu()" class="fa-solid fa-bars" style="color: white;"></i>
+                <div class="menu-items">
+                    <ul>
+                        <li>
+                            <a href="./about.html">About</a>
+                        </li>
+                        <li>
+                            <a href="./resume.html">Resume</a>
+                        </li>
+                        <li>
+                            <a href="./blog.html">Blog</a>
+                        </li>
+                        <li>
+                            <a href="./contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
            </div>
         <!-------- navbar end -------->
 
@@ -49,7 +69,7 @@
             <div class="bcenter-name">
                 I'm a 
             <div class="animatedtext">
-                <h3>Developer </h3>
+                <h3 id="animate">""</h3>
             </div>
             </div>
             </div>
@@ -89,7 +109,31 @@
     </div>
        </div>
 
+     <script>
+        let menuit = document.querySelector(menu-items);
 
+        let showMenu = function(){
+            console.log(menuit);
+        }
+
+
+
+
+        let anitxt = document.getElementById('animate');
+
+        let arr = ["developer","freelancer","designer"];
+        let i = 0;
+       
+        const startAnimate = setInterval(function(){
+            anitxt.textContent = arr[i];
+            i++;
+
+            if(i == 3){
+                i = 0;
+            }
+        },2000)
+        
+     </script>
     </body>
 </html>
 
